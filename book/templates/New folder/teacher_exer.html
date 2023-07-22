@@ -1,0 +1,53 @@
+{% extends 'layout_t.html' %} 
+{%load static%}
+{% block header %}
+<div class="main">
+    <h3 style="margin-left: 500px;font-size: larger;margin-right: 0px;">إضافة تمرين</h3>
+    <form id="form_content" method="post" action="{% url 'add_exer' %}" >
+        {% csrf_token %}
+        <select id="graph" name="graph_num" required>
+            {% for paragraphs in paragraph %}
+                 <option value="{{paragraphs.id}}"> {{paragraphs.pnumber}}</option>
+            {% endfor %}
+        </select>
+        <label for="graph">رقم الفقرة</label>
+        <br><br>
+        <select id="aim" name="aim_text" required>
+            {% for aims in aim %}
+            <option value="{{aims.id}}"> {{aims.laAim}}</option>
+            {% endfor%}
+        </select>
+        <label for="aim_text">اختار الهدف</label>
+        <br><br>
+        <select id="aim_type" name="aim_type" required>
+            {% for aim in aims %}
+                <option value="{{aim.id}}">{{aim.aim}} </option>
+            {% endfor%}
+        </select>
+        <label for="aim">نوع الهدف </label>
+             <br><br>
+    <textarea name="exer_name" rows="10" cols="40" required>
+    </textarea>
+    <label>أدخل التمرين</label>
+    <br><br><br><br><br><br><br>
+    <input type="text" name="lesson_answer1" required/>
+        <label>الاختيار الأول</label>
+        <br><br>
+    <input type="text" name="lesson_answer2" required/>
+    <label>الاختيار الثانى</label>
+    <br><br>
+    <input type="text" name="lesson_answer3" required/>
+    <label>الاختيار الثالث</label>
+    <br><br>
+    <input type="text" name="lesson_answer4" required/>
+    <label>الاختيار الرابع</label>
+    <br><br>
+    <input type="text" name="correct_answer" required/>
+        <label>الإجابة</label>
+        <br><br>
+        <input type="reset" value="إدخال جديد"/>
+        <input type="submit" name="send" value="حفظ البيانات" />
+
+    </form>
+</div>
+{% endblock %}

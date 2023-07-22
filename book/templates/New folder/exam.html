@@ -1,0 +1,44 @@
+{% extends 'layout_s.html' %} 
+{%load static%}
+{% block header %}
+<div class="sidebar">
+    <h2>: المحتوى  </h2>
+  <div class="sidebar_content">
+    
+    <ul >
+        {%for lesson in lessons%}
+        <li><a href="{% url 'view_lesson' lesson.id %}">{{lesson.lname}} </a></li>  
+        {% endfor %}   
+     </ul>
+    
+  </div>
+  <h2><a href="{% url 'student_aims'%}">أهداف التعليمية</a></h2>
+  <h2><a href="{% url 'student_exmple' 1%}">الأمثلة</a></h2>
+  
+</div>
+<div class="main" style="grid-column:span 5;">
+    
+<div id="all" >
+             <div class="exmple" style="direction: rtl;">
+                <form method="post" action="{% url 'result'%}">
+                    {% csrf_token %}
+                    {% for quizs in quiz%}
+                 <h4 style="direction: rtl;">{{quizs.question}}</h4>
+                
+                     <input type="radio" value="{{quizs.ans1}}" name ="{{quizs.question}}"> <label > {{quizs.ans1}}</label> <br>
+                     <input type="radio" value="{{quizs.ans2}}" name ="{{quizs.question}}"> <label> {{quizs.ans2}}</label><br>
+                     <input type="radio" value="{{quizs.ans3}}" name ="{{quizs.question}}"> <label> {{quizs.ans3}}</label><br>
+                     <input type="radio" value="{{quizs.ans4}}" name ="{{quizs.question}}"> <label> {{quizs.ans4}}</label><br>
+                   <!-- <label id ="correct" style="visibility: hidden;">{{quizs.correct_ans}}</label>-->  
+                   {% endfor %}     
+              <button type="submit" >send</button>
+                    </form>
+                 </div>
+
+                 
+     </div>
+  
+    <!-- <button id ="btn">SEND</button> -->
+   <!--  <input type="submit" class="btn btn-success" value="Submit" id="b1" onclick="getanswers()">-->
+    </div>
+{% endblock %}

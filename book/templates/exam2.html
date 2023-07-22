@@ -1,0 +1,26 @@
+{% extends 'student_layout.html' %} 
+{%load static%}
+
+{% block header1 %}
+
+<!-- صفحة الاختبار النهائى -->
+<main>
+  <h2>الاختبار النهائى</h2>
+<form method="post" action="{% url 'result'%}" style="grid-column: span 2; margin-left: 100px; margin-right: 100px;">
+  {% csrf_token %}
+  {% for quizs in quiz%}
+<div class="boxs" style="padding-bottom:20px ;">
+ 
+  <p style="padding-top: 20px; color:  #0694e6;font-size: 30px;">{{quizs.question}}  </p>
+          <input type="radio" value="{{quizs.ans1}}" name ="{{quizs.question}}"> <label > {{quizs.ans1}}</label> <br>
+        <input type="radio" value="{{quizs.ans2}}" name ="{{quizs.question}}"> <label> {{quizs.ans2}}</label><br>
+        <input type="radio" value="{{quizs.ans3}}" name ="{{quizs.question}}"> <label> {{quizs.ans3}}</label><br>
+        <input type="radio" value="{{quizs.ans4}}" name ="{{quizs.question}}"> <label> {{quizs.ans4}}</label><br>
+       
+</div>
+{% endfor %}
+<button id="btn1" type="submit" >send</button> 
+</form>
+</main>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> My Book</title>
+        <link href="{% static 'css/style1.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=rabar,althawra-fikra-bold,zahra-bold" />
+        <link rel="icon" type="image/x-icon" href="{% static 'img/logo1.png' %}">
+        <style>
+            body{
+                background: url("{%static 'img/book2.jpg' %}") no-repeat;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="content">
+            <div class="header">
+                
+            </div>
+            <div class="sidebar">
+            </div>
+            <div class="main">
+                <img src="{% static 'img/logo2.png' %}">
+                <h2>أهلا بكم فى موقعنا للكتاب الإلكترونى التفاعلى</h2>
+                <div class="links">
+                    <a href="{% url 'student_login'%}">طالب</a>
+                    <a href="{%url 'teacher_login' %}">معلم</a>
+                </div>
+            </div>
+            <div class="section"></div>
+            <div class="footer">
+            </div>
+        </div>
+  
+    </body>
+</html>

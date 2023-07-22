@@ -1,0 +1,26 @@
+{% extends 'student_layout.html' %} 
+{%load static%}
+
+{% block header1 %}
+
+<!-- الصفحة الخاصة بعرض نتيجة الاختبار النهائى للطالب-->
+<main>
+  <h2>الدرجات</h2>
+            <div class="boxs">
+            <p>الدرجة :      <span>{{score}}</span> </p>
+            <p>النسبة المئوية :     <span> {{percent}}</span> </p>
+            <p>عدد الإجابات الصحيحة:    <span> {{correct}}</span> </p>
+            <p>عدد الإجابات الخاطئة:      <span>{{wrong}}</span> </p>
+            <p>العدد الكلى للأسئلة:      <span>{{total}}</span></p>
+            <p style="text-align: center; color:brown">بالنجاح والتوفيق</p>
+            </div>
+            <div class="boxs">
+                <img src="{% static 'img/resualt.jpg' %}" style="width: fit-content; border-radius: 50px;">
+            </div>
+
+</main>
+
+{% endblock %}
+
+
+

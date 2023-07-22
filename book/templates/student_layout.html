@@ -1,0 +1,99 @@
+{%load static%}
+<html>
+    <head>
+      <title> My Book</title>
+ <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+<!--<link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=rabar,althawra-fikra-bold,zahra-bold" />-->
+<link rel="icon" type="image/x-icon" href="{% static 'img/logo1.png' %}">
+<style>
+   
+    </style> 
+<script>
+    /* When the user clicks on the button, 
+                toggle between hiding and showing the dropdown content */
+                function myFunction() {
+                  document.getElementById("myDropdown").classList.toggle("show");
+                }
+                
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                  if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
+                /*-------------------------*/
+                function myFunction1() {
+                  document.getElementById("content_item").classList.toggle("show");
+                }
+                
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                  if (!event.target.matches('.dropbtn1')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content1");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
+</script>
+    </head>
+    <body>
+      <!-- الصفحة التى تمثل الشكل الرئيسى لصفحة الطالب-->
+        <div id="content">
+        <header style="min-width: 1500px;">
+            <img src="{% static 'img/logo1.png' %}">
+            <div class="dropdown">
+              {% if user.is_authenticated and user.is_student%}
+                <button onclick="myFunction()" class="dropbtn">{{user.username}}  
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="{% url 'log_out'%}">تسجيل الخروج</a>
+                    
+                </div>
+                {% endif%}
+            </div>
+            <div id="list2">
+                <button onclick="myFunction1()" class="dropbtn1"> المحتوى 
+                </button>
+                <div id="content_item" class="dropdown-content1">
+                  {%for lesson in lessons%}
+                    <a href="{% url 'view_lesson' lesson.id %}">{{lesson.lname}} </a>
+                    <hr>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="list_style" id="list">
+                <a href="{% url 'student_aims'%}">الأهداف التعليمية</a>
+            </div>
+            <div class="list_style" id="list1">
+              <a href="{% url 'pre_exam'%}">الاختبار القبلى</a>
+          </div>
+            <div class="list_style" id="list3">
+                <a href="{% url 'student_exmple' 1%}">الأنشطة</a>
+            </div>
+            <div class="list_style" id="list4">
+                <a href="{% url 'student_exam' %}">الاختبار البعدى</a>
+            </div>
+            <div class="list_style" id="list5">
+              <a href="{% url 'contact' %}"> تواصل معنا</a>
+          </div>
+        </header>
+        {% block header1 %}
+        {% endblock %}
+        <footer>
+            <img src="{% static 'img/book4.png' %}" width="200px">
+        </footer>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+{%load static%}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=rabar,althawra-fikra-bold,zahra-bold" />
+<link rel="icon" type="image/x-icon" href="{% static 'img/logo1.png' %}">
+<style>
+   
+    </style> 
+<script>
+    /* When the user clicks on the button, 
+                toggle between hiding and showing the dropdown content */
+                function myFunction() {
+                  document.getElementById("myDropdown").classList.toggle("show");
+                }
+                
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                  if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
+</script>
+    </head>
+    <body>
+        <!-- الصفحة التى تمثل الشكل الخاص بصفحات المعلم -->
+        <div id="content">
+        <header>
+            <img src="{% static 'img/logo1.png' %}">
+            <div class="dropdown">
+                {% if user.is_authenticated and user.is_teacher%}
+                  <button onclick="myFunction()" class="dropbtn">{{user.username}}  
+                  </button>
+                  <div id="myDropdown" class="dropdown-content">
+                      <a href="{% url 'log_out'%}">تسجيل الخروج</a>
+                      
+                  </div>
+                  {% endif%}
+              </div>
+            <div class="list_style" id="list">
+                <a href="{% url 'teacher_lesson' %}"> إضافة دروس</a>
+            </div>
+            <div class="list_style" id="list1">
+                <a href="{% url 'teacher_paragraph' %}"> إضافة فقرات</a>
+            </div>
+            <div class="list_style" id="list2">
+                <a href="{% url 'teacher_aim' %}">إضافة أهداف</a>
+            </div>
+            <div class="list_style" id="list3">
+                <a href="{% url 'teacher_exm' %}"> إضافة أمثلة</a>
+            </div>
+            <div class="list_style" id="list4">
+                <a href="{% url 'teacher_exer' %}"> إضافة تمرين</a>
+            </div>
+            <div class="list_style" id="list5">
+                <a href="{% url 'teacher_exams' %}"> إضافة اختبار</a>
+            </div>
+          
+        </header>
+        {% block header2 %}
+        {% endblock %}
+        
+        <footer>
+            <img src="{% static 'img/book4.png' %}" width="200px">
+        </footer>
+    </div>
+    </body>
+</html>

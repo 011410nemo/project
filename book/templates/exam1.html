@@ -1,0 +1,27 @@
+{% extends 'student_layout.html' %} 
+{%load static%}
+
+{% block header1 %}
+<!-- الصفحة الخاصة بالدخول للاختبار-->
+
+<main>
+  <h2>الاختبار النهائى</h2>
+            <div class="boxs">
+                <table>
+                  {% for lesson in lessons%}
+                    <tr>
+                        <td><p>{{lesson.lname}} </p></td>
+                        
+                        <td><a href="{% url 'exam' lesson.id%}" class="link" style="width:100px; text-align: center;color: white;font-size: 30px; background-color: #0694e6;">start </a></td>
+                    </tr>
+                    {% endfor%}
+                </table>
+                
+
+            </div>
+</main>
+
+{% endblock %}
+
+
+      

@@ -1,0 +1,42 @@
+{% extends 'layout_t.html' %} 
+{%load static%}
+{% block header %}
+<div class="main">
+    <h3 style="margin-left: 500px;font-size: larger;margin-right: 0px;">إضافة إختبار</h3>
+    <form id="form_content" method="post" action="{% url 'add_quiz' %}" >
+        {% csrf_token %}
+        <select id="graph" name="graph" required>
+            {% for lessons in lesson %}
+                <option value="{{lessons.id}}">{{lessons.lname}} </option>
+            {% endfor%}
+        </select>
+        <label for="graph">عنوان الدرس</label>
+             <br><br>
+    <textarea name="question" rows="10" cols="40" required>
+    </textarea>
+    <label>أدخل السؤال</label>
+    <br><br><br><br><br><br><br>
+    <input type="text" name="lesson_answer1" required/>
+        <label>الاختيار الأول</label>
+        <br><br>
+    <input type="text" name="lesson_answer2" required/>
+    <label>الاختيار الثانى</label>
+    <br><br>
+    <input type="text" name="lesson_answer3" required/>
+    <label>الاختيار الثالث</label>
+    <br><br>
+    <input type="text" name="lesson_answer4" required/>
+    <label>الاختيار الرابع</label>
+    <br><br>
+    <input type="text" name="correct_answer" required/>
+        <label>الإجابة</label>
+        <br><br>
+    <input type="text" name="answer_degree" required />
+    <label>درجة السؤال</label>
+        <br><br>
+        <input type="reset" value="إدخال جديد"/>
+        <input type="submit" name="send" value="حفظ البيانات" />
+
+    </form>
+    </div>
+{% endblock %}

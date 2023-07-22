@@ -1,0 +1,28 @@
+{% extends 'layout_t.html' %} 
+{%load static%}
+{% block header %}
+<div class="main">
+    <h3 style="margin-left: 500px;font-size: larger;margin-right: 0px;">إضافة فقرات</h3>
+    <form id="form_content" action="{% url 'paragraph' %}"  method="post">
+        {% csrf_token %}
+        <select id="graph" name="graph" required>
+            {% for lessons in lesson %}
+                <option value="{{lessons.id}}">{{lessons.lname}} </option>
+            {% endfor%}
+        </select>
+        <label for="graph">عنوان الدرس</label>
+        <br><br>
+        <input type="text" name="p_num" required/>
+        <label>رقم الفقرة</label>
+        <br><br>
+        <textarea name="p_paragraph" rows="10" cols="40" required>
+        </textarea>
+        <label>أدخل الفقرة</label>
+        <br><br>
+    <br><br>
+        <input type="reset" value="إدخال جديد"/>
+        <input type="submit" name="send" value="حفظ البيانات" />
+
+    </form>
+</div>
+{% endblock %}

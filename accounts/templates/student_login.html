@@ -1,0 +1,42 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> My Book</title>
+        <link href="{% static 'css/style1.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=rabar,althawra-fikra-bold,zahra-bold" />
+        <link rel="icon" type="image/x-icon" href="{% static 'img/logo1.png' %}">
+        <style>
+            body{
+                background: url("{%static 'img/book2.jpg' %}") no-repeat;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="content">
+            <div class="header">
+                
+            </div>
+            <div class="sidebar">
+                <!-- <img src="C:\my_project\images\book.png" width="650px"> -->
+
+            </div>
+            <div class="main">
+                <img src="{% static 'img/logo4.png' %}">
+                <h2>تسجيل دخول الطالب</h2>
+                <form action="{% url 'login_s'%}" class="form_sign" method="post">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Username" name="user" required>
+                    <input type="password" placeholder="Password" name="password" required>
+                      <br>
+                      <button style="background-color: rgb(90, 97, 233);" type="submit" id="btn">Sign In</button>
+                </form>
+            </div>
+            <div class="section"></div>
+            <div class="footer">
+            </div>
+        </div>
+  
+    </body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'layout_t.html' %} 
+{%load static%}
+{% block header %}
+<div class="main">
+    <h3 style="margin-left: 500px;font-size: larger;margin-right: 0px;">إضافة دروس</h3>
+    <form id="form_content" action="{% url 'add_content'%}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="content_name" required />
+        <label>اسم المادة</label>
+        <br><br>
+        <input type="text" name="lesson_name" required/>
+        <label>عنوان الدرس</label>
+        <br><br>
+        <input type="text" name="lesson_num" required/>
+        <label>رقم الدرس</label>
+        <br><br>
+        <input type="file" name="lesson_file" accept=".doc,.docx,application/msword,.pdf" required/>
+        <label>الملف الخاص بالدرس</label>
+        <br><br>
+    <br><br>
+        <input type="reset" value="إدخال جديد"/>
+        <input type="submit" name="send" value="حفظ البيانات" />
+
+    </form>
+</div>
+{% endblock %}

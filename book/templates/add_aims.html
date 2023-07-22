@@ -1,0 +1,60 @@
+{% extends 'teacher_layout.html' %} 
+{%load static%}
+
+{% block header2 %}
+<!-- الصفحة الخاصة بإضافة أهداف-->
+        <main>
+            <h2> إضافة أهداف</h2>
+            <div id="form">
+            <form id="form_content" action="{% url 'add_aim'%}" method="post" >
+                {% csrf_token %}
+                <label for="graph">عنوان الدرس</label>
+                <select id="graph" name="graph" required>
+                    {% for lessons in lesson %}
+                        <option value="{{lessons.id}}">{{lessons.lname}} </option>
+                    {% endfor%}
+                </select>
+                <label for="graph1">رقم الفقرة</label>  
+                <select id="graph1" name="graph_num" required onchange="getSelectedValue();">
+                    {% for paragraphs in paragraph %}
+                         <option value="{{paragraphs.id}}"> {{paragraphs.pnumber}}</option>
+                    {% endfor %}
+                </select>
+                <p id="pname"></p>
+                <label>أدخل الهدف</label>
+                <input type="text" name="lesson_aim" required/>
+                <label for="aim">نوع الهدف </label>
+                <select id="aim_type" name="aim_type" required>
+                    {% for aim in aims %}
+                        <option value="{{aim.id}}">{{aim.aim}} </option>
+                    {% endfor%}
+                </select>
+               
+                     <br><br>
+                <input type="reset" value="إدخال جديد"/>
+                <input type="submit" name="send" value="حفظ البيانات" />
+        
+            </form>
+        </div>
+        
+        </main>
+         
+    <script>
+        function getSelectedValue(){
+            var selectedvalue = document.getElementById("graph1").value;
+            var graphs = document.getElementById("pname");
+            '{% for paragraphss in paragraph %}'
+            var s = '{{paragraphss.id}}';
+            var i = '{{paragraphss.plname}}';
+            
+            if (s == selectedvalue){
+               graphs.innerHTML =i;
+             
+            }
+            '{%endfor%}';
+    
+            
+          
+        }
+    </script>
+   {% endblock %}  

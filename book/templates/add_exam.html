@@ -1,0 +1,43 @@
+{% extends 'teacher_layout.html' %} 
+{%load static%}
+
+{% block header2 %}
+<!-- الصفحة الخاصة بإضافة اختبار-->
+        <main>
+            <h2> إضافة اختبار</h2>
+            <div id="form">
+                <form id="form_content" method="post" action="{% url 'add_quiz' %}" >
+                    {% csrf_token %}
+                    <label for="graph">عنوان الدرس</label>
+                    <select id="graph" name="graph" required>
+                        {% for lessons in lesson %}
+                            <option value="{{lessons.id}}">{{lessons.lname}} </option>
+                        {% endfor%}
+                    </select>
+                    <label>أدخل السؤال</label> 
+                <textarea name="question" rows="10" cols="40" required>
+                </textarea>
+               
+                <label>الاختيار الأول</label>
+                <input type="text" name="lesson_answer1" required/>
+                <label>الاختيار الثانى</label>
+                <input type="text" name="lesson_answer2" required/>
+                <label>الاختيار الثالث</label>
+                <input type="text" name="lesson_answer3" required/>
+                <label>الاختيار الرابع</label>
+                <input type="text" name="lesson_answer4" required/>
+                <label>الإجابة</label>
+                <input type="text" name="correct_answer" required/>
+                <label>درجة السؤال</label>
+                <input type="text" name="answer_degree" required />
+                
+                    <br><br>
+                    <input type="reset" value="إدخال جديد"/>
+                    <input type="submit" name="send" value="حفظ البيانات" />
+            
+                </form>
+            
+        </div>
+        
+        </main>
+        {% endblock %}  

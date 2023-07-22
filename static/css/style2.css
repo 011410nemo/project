@@ -1,0 +1,401 @@
+body{
+    text-align: center;
+    background-color: #dec0460b;
+}
+.content{
+    display: grid;  
+    grid-template-columns:repeat(6 , 1fr);
+    grid-auto-rows:  minmax(40px , auto);
+    max-width: 1500px;
+    margin: 0 auto;
+    font-size: 25px;   
+    gap: 10px;
+    
+}
+/* header part */ 
+.header{
+    grid-column: span 6;
+    display: grid;
+    grid-template-columns: repeat(6 , 1fr);
+    gap: 10px;
+}
+
+/*.header p{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    font-family: 'zahra-bold';
+    font-size: 25px;   
+
+}*/
+.header img{
+    grid-column:7/7 ; 
+    margin-right: 5px;
+}
+/* drop down button */
+/*--------------------------------------------*/
+/* section part */
+.section{
+    grid-column: span 6;
+    background-color: rgb(90, 97, 233);
+    border-radius: 20px;
+
+}
+.section a{
+    text-decoration: none;
+    padding: 10px;
+    margin-right: 50px;
+    font-family: 'zahra-bold';
+    font-size: 25px;   
+    color: white;
+
+}
+/*sidebar part */
+.sidebar{
+    grid-column:6/7;
+}
+.sidebar_content{
+    background-color:  rgb(91, 99, 235);
+    height: 120px;
+    border-radius: 20px;
+   margin-bottom: 5px; 
+    padding-bottom: 10px;
+}
+.sidebar h2{
+    color: white;
+    text-align: end;
+    padding:10px;
+    margin: 0 auto;
+    font-family: 'zahra-bold';
+    background-color: rgb(90, 97, 233);
+    border-radius: 20px;
+    font-size: 30px;
+}
+.sidebar h2 a{
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.sidebar_content ul{
+    background-color: rgb(90, 97, 233);
+    list-style-type: none;
+    text-align: end;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+.sidebar_content ul li{
+
+    margin-right: 10px;
+
+}
+.sidebar_content ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'zahra-bold';
+    padding-right: 5px;    
+    
+}
+
+/* main part */
+.main{
+    grid-column: span 4;
+    grid-row-start:3;
+   /* background-color: aqua; */
+}
+
+.main h3{
+    color:  rgb(91, 99, 235);
+    text-align: end;
+    padding: 15px;
+    margin: 10px;
+    font-family: 'zahra-bold';
+    background-color:  #e6e6e6;
+    border-radius: 20px;
+    font-size: 25px;
+
+}
+.main h4{
+    color: rgb(91, 99, 235);
+    text-align: end;
+    padding: 15px;
+    margin: 10px;
+    font-family: 'zahra-bold';
+    background-color:  #f8f5f5;
+    border-radius: 20px;
+    font-size: 25px;
+}
+.main embed{
+    align-items: stretch;
+    margin-top: 10px; 
+    height: 600px;
+    border-radius: 20px;
+    border: 1px solid black;
+    align-items: stretch;
+    width:100%;
+    
+}
+.aims{
+ /*   width:900px; */
+    margin: 15px auto;
+    padding: 10px;
+    background-color:  #f6f3f3;
+    text-align: end;
+    align-items: end;
+    border-radius: 20px;
+}
+.aims p a{
+    font-family: 'zahra-bold';
+    text-decoration: none;
+    color:  rgb(91, 99, 235);
+    font-size: 25px;
+}
+/* موجود فى صفحة الامثلة جزء الفقرة*/
+ .paragrph{
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+ }
+
+.paragrph1{
+    grid-column: 2/4;
+    margin: 15px;
+    padding: 10px;
+    background-color:  #f6f3f3;
+    border: 1px solid rgb(142, 142, 142);
+    border-radius: 20px;
+    text-align: end;
+    align-items: end;
+}
+.paragrph1 p{
+    font-size: 20px;
+}
+.paragrph1 a{
+    text-decoration: none;
+    color: rgb(34, 32, 32);
+    font-size: 25px;
+    font-family: 'zahra-bold';
+}
+.paragrph2{
+    grid-column: span 2;
+    grid-row-start: 1;
+    margin: 15px 0px;
+    padding: 10px;
+    background-color:  #f6f3f3;
+    border: 1px solid rgb(142, 142, 142);
+    border-radius: 20px;
+    text-align: end;
+    align-items: end;
+    visibility: hidden;
+}
+.paragrph2 a{
+    text-decoration: none;
+    color: rgb(34, 32, 32);
+    font-size: 25px;
+    font-family: 'zahra-bold';
+}
+/*  صفحة الأمثلة جزء الكلمات الرئيسية */ 
+.key_words{
+    margin-top:5px;
+    display: grid;
+    grid-template-columns:repeat(6 , 1fr);
+    gap: 10px;
+    border: 1px solid rgb(114, 113, 113);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+
+}
+.key_words p{
+    display: inline;
+   /* grid-column: span 2; */
+    background-color:  #c0bebe;
+    border-radius: 10px;
+    border:1px solid black;
+    margin-top: 5px;
+    color: rgb(91, 99, 235);
+    font-family: 'zahra-bold';
+    padding: 5px;
+    text-align: center;
+}
+.links{
+    margin-top: 20px;
+    grid-column: 1/3;
+    align-items: center;
+    width: 300px;
+
+}
+.links a{
+    text-decoration: none;
+    font-family: 'zahra-bold';
+    background-color:  #e6e6e6;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    color: rgb(91, 99, 235);
+    height: 30px;
+    padding: 10px;
+  
+
+
+}
+/*  صفحة الأمثلة جزء المثال*/ 
+.exmple{
+border: 1px solid rgb(120, 119, 119);
+border-radius: 20px;
+margin-bottom: 10px;
+
+}
+.exmple h6{
+    text-align: end;
+    margin: 10px;
+    padding: 10px;
+}
+/*النموذج الخص بالسؤال فى صفحة الامثلة الخاصة بالطالب */
+.exmple form label{
+    font-size: 20px;
+    
+}
+.exmple form{
+    margin-right: 20px;
+}
+.exmple form input[type="radio"]{
+   margin-bottom: 5px;
+   
+}
+.exmple form input[type="submit"]{
+    margin:10px;
+    border-radius: 20px;
+    color: white;
+    background-color:  rgb(91, 99, 235);
+    font-size: 20px;
+    
+    
+ }
+ /*-------------------------------------*/
+ /* pageniation */
+.pagination ul{
+    width:fit-content;
+    background-color: rgb(90, 97, 233);
+    list-style-type: none;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.pagination ul li{
+    display: inline;
+    padding: 10px;
+    margin: 5px;
+    
+}
+  
+.pagination ul li a{
+    text-decoration: none;
+    border-right:0.5px solid rgb(255, 255, 255) ; 
+    padding-right: 5px;
+    color: white;
+    margin-right: 5px;
+}
+.pagination ul li:last-child  a:last-child{
+    border-right:0px; 
+
+}
+/*----------------------------------------------------*/
+/* النموذج الخاص بإضافة دروس */
+  #form_content{
+    float:right;
+    margin: 15px 50px;
+    padding: 20px;
+    line-height: 30px;
+}
+  #form_content input[type="text"]{
+    float: left;
+    width: 300px;
+    height:30px;
+    font-weight: bold;
+    border-radius: 15px;
+    border: 1px solid #cccccc;
+    padding: 10px 20px;
+    direction: rtl;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+#form_content select{
+    float: left;
+    width: 340px;
+    height: 50px;
+    border-radius: 15px;
+    border: 1px solid #cccccc;
+     padding: 10px;
+    direction: rtl;
+     margin-right: 20px;
+}
+#form_content option{
+    padding: 10px;
+    font-size: 15px;
+}
+#form_content textarea{
+    width: 320px;
+    float: left;
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid #cccccc;
+    direction: rtl;
+        
+}
+  #form_content input[type="submit"]{
+    float: left;
+    width:150px;
+    height: 50px;
+    color: #cccccc;
+    background-color: rgb(90, 97, 233);
+    border-radius: 30px;
+    border: 1px solid #cccccc;
+    padding: 5px;
+    font-size: 20px;
+    font-family:Adobe Naskh;
+ }
+ #form_content input[type="reset"]{
+    float: left;
+     width:150px;
+     height: 50px;
+     color: #cccccc;
+     background-color: rgb(90, 97, 233);
+     border-radius: 30px;
+     border: 1px solid #cccccc;
+     padding: 5px;
+     font-size: 20px;
+     font-family:Adobe Naskh;
+     
+}
+#form_content input[type="file"]{
+    grid-column: 1/2;
+    font-family: Adobe Naskh;
+    font-size: 25px;
+}
+input::file-selector-button {
+    font-weight: bold;
+    color: rgb(91, 99, 235);
+    padding: 0.5em;
+    border: thin solid grey;
+    border-radius: 10px;
+    font-size: 15px;
+    width:35%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+}
+label{
+    grid-column: 2/3;
+    margin: 0 auto;
+    font-size: 25px;
+    color: rgb(91, 99, 235);
+    font-family:Adobe Naskh;
+    font-weight: bolder;
+    margin-left: 10px;
+    align-items: end;
+}
+.footer{
+    grid-column: span 6;
+   /* background-color: aqua; */
+}

@@ -1,0 +1,156 @@
+{% extends 'layout_s.html' %} 
+{% load markdownify %}
+{%load static%}
+
+{% block header %}
+<div class="sidebar">
+    <h2>: المحتوى  </h2>
+  <div class="sidebar_content">
+    
+    <ul>
+        {%for lesson in lessons%}
+        <li><a href="{% url 'view_lesson' lesson.id %}">{{lesson.lname}} </a></li>  
+        {% endfor %}
+       <!-- <li><a href="#">الدرس الثانى</a></li>
+        <li> <a href="#">الدرس الثالث</a></li>-->
+     
+     </ul>
+    
+  </div>
+  <h2><a href="{% url 'student_aims'%}">أهداف التعليمية</a></h2>
+  <h2><a href="{% url 'student_exmple' 1 %}">الأمثلة</a></h2>
+  
+</div>
+<div class="main" style="grid-column:span 5;">
+    <div class="paragrph" style="display: grid;grid-template-columns: 1fr 1fr;">    
+        <div class="paragrph1">
+            {% for paragraph in paragraphs%}
+        <p style="color: black; direction: rtl;">{{paragraph.paragraph}}</p>
+        <a href="#" onclick="document.getElementById('tahlel').style.visibility='visible' ;">تحليل الفقرة</a>
+        {% endfor%}
+    </div>
+    
+    <div class="paragrph2" id="tahlel" style="grid-column: 1/2;">
+       <!-- <h4>الفقرة التى تم تحليلها</h4> --> 
+       {% for sent in sents %}
+       <p style="font-size:15px;text-align: right; direction:rtl ; color :rgb(63, 27, 26);font-weight: bolder;">{{sent}}</p>
+       <hr>
+       {% endfor %}
+       <!--خاصة بجزء displacy
+         <p style="font-size: smaller; direction: rtl ; color :rgb(63, 27, 26);">{{displays|markdownify}}</p> --> 
+        <a href="#" onclick="document.getElementById('tahlel').style.visibility='hidden' ;" style="text-decoration: none;
+        color: rgb(34, 32, 32);
+        font-size: 25px;
+        font-family: 'zahra-bold';">إخفاء الفقرة</a>
+    </div>
+       </div>
+
+       <h3>: الكلمات الرئيسية </h3>
+          <div class="key_words"  style="grid-template-columns:repeat(6 , 1fr); direction: rtl;">
+            {% for keywords in keyword%}
+            <p>{{keywords}}</p>
+        {% endfor %}
+        <div class="links">
+            <a href ="#key_words"  style ="grid-column:5/6;"onclick="document.getElementById('all').style.display = 'block' ;document.getElementById('all1').style.display = 'none';">أهداف تحليلية</a>
+            <a href="#key_words"  style ="grid-column:6/7;" onclick="document.getElementById('all1').style.display = 'block' ; document.getElementById('all').style.display = 'none';">أهداف تركيبية</a>
+        </div>
+    </div>
+<div id="all" style="display: none;">
+   {%for aim in aim1%}
+            <h3> الهدف : {{aim.laAim}}</h3>
+    {% endfor %}
+    {%for exmple in exmple1%}
+            <div class="exmple" style="direction: rtl;">      
+            <h4 style="direction: rtl;">السؤال : {{exmple.exexmple}}</h4>
+                <h6 style="direction: rtl;"> الإجابة : {{exmple.exanswer}}</h6>             
+            </div>
+            {% endfor %}
+            {%for exersize in exer1%}
+            <div class="exmple" style="direction: rtl;">
+                <h4>تمرين : {{exersize.exersize}}</h4>
+                   
+                    <input type="radio" value="{{exersize.exer1}}" name ="answer"> <label > {{exersize.exer1}}</label> <br>
+                    <input type="radio" value="{{exersize.exer2}}" name ="answer"> <label> {{exersize.exer2}}</label><br>
+                    <input type="radio" value="{{exersize.exer3}}" name ="answer"> <label> {{exersize.exer3}}</label><br>
+                    <input type="radio" value="{{exersize.exer4}}" name ="answer"> <label> {{exersize.exer4}}</label><br>
+                    <label id ="correct" style="visibility: hidden;">{{exersize.exer_correct}}</label>
+                    <button id="btn">answer</button>
+                    <p id="output"></p>
+                
+                </div>
+                {% endfor %}
+    </div>
+    <div id="all1" style="display: none;">
+        {%for aim in aim2%}
+                 <h3>الهدف : {{aim.laAim}}</h3>
+         {% endfor %}
+         {%for exmple in exmple2%}
+                 <div class="exmple" style="direction: rtl;">
+                   
+                 <h4> السؤال :  {{exmple.exexmple}}</h4>
+                     <h6> الإجابة : {{exmple.exanswer}}</h6>
+                     
+                 </div>
+                 {% endfor %}
+                 {%for exersize in exer2%}
+            <div class="exmple">
+                <h4>تمرين : {{exersize.exersize}}</h4>
+               
+                    <input type="radio" value="{{exersize.exer1}}" name ="answer"> <label > {{exersize.exer1}}</label> <br>
+                    <input type="radio" value="{{exersize.exer2}}" name ="answer"> <label> {{exersize.exer2}}</label><br>
+                    <input type="radio" value="{{exersize.exer3}}" name ="answer"> <label> {{exersize.exer3}}</label><br>
+                    <input type="radio" value="{{exersize.exer4}}" name ="answer"> <label> {{exersize.exer4}}</label><br>
+                    <button id="btn">answer</button>
+                    <label id ="correct" style="visibility: hidden;">{{exersize.exer_correct}}</label>
+                    <p id="output"></p>
+               
+                </div>
+                {% endfor %}
+         </div>
+        <br>
+    {% if paragraphs.has_other_pages %}
+     <div class="pagination" >
+            <ul>
+            {% if paragraphs.has_previous %}
+              <li ><a  href="{%url 'student_exmple' paragraphs.previous_page_number %}">Previous</a></li>
+              {% else %}
+                  <li class="disabled"></li>
+              {% endif %}
+              {% for page in paragraphs.paginator.page_range %}
+                {% if paragraphs.number == page %}
+              <li ><a  href="{% url 'student_exmple' page %}">{{ page }}</a></li>
+                {% else %}
+                <li ><a  href="{% url 'student_exmple' page %}">{{ page }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if paragraphs.has_next %}
+              <li ><a  href="{% url 'student_exmple' paragraphs.next_page_number %}">Next</a></li>
+              {% else %}
+               <li class="disabled"></li>
+          {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+        
+</div>
+<script>
+    const btn = document.querySelector('#btn'); 
+    const l = document.getElementById("correct")  ;     
+    const radioButtons = document.querySelectorAll('input[name="answer"]');
+        btn.addEventListener("click", () => {
+            let selectedSize;
+            for (const radioButton of radioButtons) {
+                if (radioButton.checked) {
+                    if(radioButton.value == l.innerHTML ){
+                        selectedSize = l.innerHTML;
+                        break;
+                    }
+                    
+                }
+            }
+            // show the output:
+            output.innerText = selectedSize ? `إجابة صحيحة` : `حاول مجددا`;
+        });
+</script>
+{% endblock %}
+

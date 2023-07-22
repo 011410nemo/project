@@ -1,0 +1,27 @@
+{% extends 'student_layout.html' %} 
+{%load static%}
+
+{% block header1 %}
+
+
+<main>
+  <h2>    اسم الدرس : {{name.lname}} </h2>
+  <a href="{% url 'download_books' 1 %}" style="font-size: 30px;">تنزيل الكتاب</a>
+        {%if name.lfile %}
+        
+         <iframe   style ="grid-column: span 2;justify-self: center;margin-left: 100px;margin-right: 100px;" src="{{ name.lfile.url}}" type="application/vnd.openxmlformats-officedocument.presentationml.presentation" width="90%" height="700px"></iframe>
+        {% endif %}
+<h2>إضافة ملاحظات</h2>
+        <div class="boxs" id="comment" style="margin-right: 100px;">
+          <form  id="form_note" action="#" method="post">
+              <label>إضافة ملحوظة </label>
+              <textarea></textarea>
+              <input type="reset" value="إدخال جديد">
+              <input type="submit" name="send" value="حفظ" />
+              <a href="#">عرض جميع الملاحظات</a>
+          </form>
+      </div>
+</main>
+
+{% endblock %}
+

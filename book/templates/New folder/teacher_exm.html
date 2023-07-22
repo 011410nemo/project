@@ -1,0 +1,42 @@
+{% extends 'layout_t.html' %} 
+{%load static%}
+{% block header %}
+<div class="main">
+    <h3 style="margin-left: 500px;font-size: larger;margin-right: 0px;">إضافة أمثلة</h3>
+    <form id="form_content" action="{% url 'add_exmple' %}" method="post" >
+        {% csrf_token %}
+        <select id="graph" name="graph_num" required>
+            {% for paragraphs in paragraph %}
+                 <option value="{{paragraphs.id}}"> {{paragraphs.pnumber}}</option>
+            {% endfor %}
+        </select>
+        <label for="graph">رقم الفقرة</label>
+        <br><br>
+        <select id="aim" name="aim_text" required>
+            {% for aims in aim %}
+            <option value="{{aims.id}}"> {{aims.laAim}}</option>
+            {% endfor%}
+        </select>
+        <label for="aim_text">اختار الهدف</label>
+        <br><br>
+        <select id="aim_type" name="aim_type" required>
+            {% for aim in aims %}
+                <option value="{{aim.id}}">{{aim.aim}} </option>
+            {% endfor%}
+        </select>
+        <label for="aim">نوع الهدف </label>
+             <br><br>
+    <textarea name="exmple_name" rows="10" cols="40" required>
+    </textarea>
+    <label>أدخل المثال</label>
+    <br><br>
+    <input type="text" name="exmple_answer" required/>
+    <br><br><br><br><br>
+        <label>الإجابة</label>
+        <br><br>
+        <input type="reset" value="إدخال جديد"/>
+        <input type="submit" name="send" value="حفظ البيانات" />
+
+    </form>
+</div>
+{% endblock %}

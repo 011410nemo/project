@@ -1,0 +1,66 @@
+{% extends 'layout_t.html' %} 
+{%load static%}
+{% block header %}
+<div class="main" >
+    <h3 style="margin-left: 500px;font-size: larger;margin-right: 0px;">إضافة أهداف</h3>
+    <div class="paragrph" >  
+        <div class="paragrph2" id="tahlel">
+            <p></p>
+        </div>
+    </div>
+    
+    <form id="form_content" action="{% url 'add_aim'%}" method="post" >
+        {% csrf_token %}
+        <select id="graph" name="graph" required>
+            {% for lessons in lesson %}
+                <option value="{{lessons.id}}">{{lessons.lname}} </option>
+            {% endfor%}
+        </select>
+        
+        <label for="graph">عنوان الدرس</label>
+        <br><br>
+        <select id="graph1" name="graph_num" required onchange="getSelectedValue();">
+            {% for paragraphs in paragraph %}
+                 <option value="{{paragraphs.id}}"> {{paragraphs.pnumber}}</option>
+            {% endfor %}
+        </select>
+        <label for="graph1">رقم الفقرة</label>  
+        <br><br>
+        
+        <p id="pname"></p>
+        <p id="pname1"></p>
+        <br><br>
+        <input type="text" name="lesson_aim" required/>
+        <label>أدخل الهدف</label>
+        <br><br>
+        <select id="aim_type" name="aim_type" required>
+            {% for aim in aims %}
+                <option value="{{aim.id}}">{{aim.aim}} </option>
+            {% endfor%}
+        </select>
+        <label for="aim">نوع الهدف </label>
+             <br><br>
+        <input type="reset" value="إدخال جديد"/>
+        <input type="submit" name="send" value="حفظ البيانات" />
+
+    </form>
+</div>
+<script>
+    function getSelectedValue(){
+        var selectedvalue = document.getElementById("graph1").value;
+        var graphs = document.getElementById("pname");
+        '{% for paragraphss in paragraph %}'
+        var s = '{{paragraphss.id}}';
+        var i = '{{paragraphss.plname}}';
+        
+        if (s == selectedvalue){
+           graphs.innerHTML =i;
+         
+        }
+        '{%endfor%}';
+
+        
+      
+    }
+</script>
+{% endblock %}

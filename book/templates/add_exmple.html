@@ -1,0 +1,47 @@
+{% extends 'teacher_layout.html' %} 
+{%load static%}
+
+{% block header2 %}
+<!-- الصفحة الخاصة بإضافة مثال-->
+        <main>
+            <h2> إضافة مثال</h2>
+            <div id="form">
+                <form id="form_content" action="{% url 'add_exmple' %}" method="post" >
+                    {% csrf_token %}
+                    <label for="graph">رقم الفقرة</label>
+                    <select id="graph" name="graph_num" required>
+                        {% for paragraphs in paragraph %}
+                             <option value="{{paragraphs.id}}"> {{paragraphs.pnumber}}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="aim_text">اختار الهدف</label>
+                    <select id="aim" name="aim_text" required>
+                        {% for aims in aim %}
+                        <option value="{{aims.id}}"> {{aims.laAim}}</option>
+                        {% endfor%}
+                    </select>
+                    <label for="aim">نوع الهدف </label>
+                    <select id="aim_type" name="aim_type" required>
+                        {% for aim in aims %}
+                            <option value="{{aim.id}}">{{aim.aim}} </option>
+                        {% endfor%}
+                    </select>
+                    
+                    <label>أدخل المثال</label> 
+                <textarea name="exmple_name" rows="10" cols="40" required>
+                </textarea>
+                
+                <label>الإجابة</label>
+                <input type="text" name="exmple_answer" required/>
+               
+                    
+                    <br><br>
+                    <input type="reset" value="إدخال جديد"/>
+                    <input type="submit" name="send" value="حفظ البيانات" />
+            
+                </form>
+            
+        </div>
+        
+        </main>
+        {% endblock %}      

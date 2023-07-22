@@ -1,0 +1,36 @@
+{% extends 'student_layout.html' %} 
+{%load static%}
+
+{% block header1 %}
+<!--الصفحة الخاصة بتواصل معنا-->
+        <main>
+
+            
+            
+            <div class="boxs" style="margin-top: 50px;">
+                <h2>تواصل معنا</h2>
+                <p> يمكنك التواصل معنا عبر صفحتنا على الفيسبوك 
+                    <a href="#"><span style="display: inline-block;width: 40px;height: 40px;
+                    background-image: url('{% static 'img/facebook (1).png' %}');
+                        background-size: cover;
+                        margin-right: 10px;"></span></a>
+                </p>
+                <p> يمكنك التواصل معنا عن طريق أرقامنا التالية فى واتساب
+                    <a href="#"><span style="display: inline-block;width: 40px;height: 40px;
+                         background-image: url('{% static 'img/whatsapp.png' %}');
+                        background-size: cover;
+                        margin-right: 10px;"></span></a>
+                </p>
+                <p style="margin-right: 150px;">01022947961&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;01022947961&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;     01022947961</p>
+               
+            </div>
+
+            <div class="boxs" style="margin-top: 50px;">
+               <h2>روابط إثرائية</h2>
+               <p><a href="#">كتب عن لغة الجافا</a></p>
+               <p><a href="#">فيديو عن شرح لغة الجافا</a></p>
+               
+            </div>
+       
+        </main>
+{% endblock %}

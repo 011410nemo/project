@@ -1,0 +1,32 @@
+{% extends 'teacher_layout.html' %} 
+{%load static%}
+
+{% block header2 %}
+<!-- الصفحة الخاصة بإضافة المحتوى -->
+        <main>
+            <h2> إضافة دروس</h2>
+            <div id="form">
+                <form id="form_content" action="{% url 'add_content'%}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <br>
+                    <label>اسم المادة</label>
+                    <input type="text" name="content_name" required />
+                   
+                    <label>عنوان الدرس</label>
+                    <input type="text" name="lesson_name" required/>
+                  
+                    <label>رقم الدرس</label>
+                    <input type="text" name="lesson_num" required/>
+               
+                    <label>الملف الخاص بالدرس</label>
+                    <input type="file" name="lesson_file" accept=".doc,.docx,application/msword,.pdf" required/>
+                  
+                <br><br>
+                    <input type="reset" value="إدخال جديد"/>
+                    <input type="submit" name="send" value="حفظ البيانات" />
+            
+                </form>
+            </div>
+            
+        </main>
+        {% endblock %}

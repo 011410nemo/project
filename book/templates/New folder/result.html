@@ -1,0 +1,30 @@
+{% extends 'layout_s.html' %} 
+{%load static%}
+{% block header %}
+<div class="sidebar">
+    <h2>: المحتوى  </h2>
+  <div class="sidebar_content">
+    
+    <ul >
+        {%for lesson in lessons%}
+        <li><a href="{% url 'view_lesson' lesson.id %}">{{lesson.lname}} </a></li>  
+        {% endfor %}   
+     </ul>
+    
+  </div>
+  <h2><a href="{% url 'student_aims'%}">أهداف التعليمية</a></h2>
+  <h2><a href="{% url 'student_exmple' 1%}">الأمثلة</a></h2>
+  
+</div>
+<div class="main" style="grid-column:span 5;">
+
+    <h5>score : {{score}}</h5>
+    <p>percent : {{percent}}</p>
+    <p>Correct answers: {{correct}}</p>
+    <p>Incorrect answers: {{wrong}}</p>
+    <p>Total questions: {{total}}</p>
+    <h5>All the best for next quiz!</h5>
+</div>
+<a href="{% url 'student_exam' %}">الرجوع للبداية </a>
+    
+{% endblock %}

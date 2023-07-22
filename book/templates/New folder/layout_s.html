@@ -1,0 +1,105 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> My Book</title>
+   <link href="{% static 'css/style2.css' %}" rel="stylesheet" /> 
+        <link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=rabar,althawra-fikra-bold,zahra-bold" />
+        <link rel="icon" type="image/x-icon" href="{% static 'img/logo1.png' %}">
+        <style>
+            .dropbtn {
+              background-color: rgb(90, 97, 233);
+              border-radius: 20px;
+              color: white;
+              padding: 16px;
+              font-size: 16px;
+              border: none;
+              cursor: pointer;
+            }
+            
+            .dropbtn:hover, .dropbtn:focus {
+              background-color: #9b9a90;
+            }
+            
+            .dropdown {
+                margin-top:20px;
+                grid-column: 1/2;
+                grid-row: 1/2;
+            /* display: inline-block;*/
+            }
+            
+            .dropdown-content {
+              display: none;
+              position: absolute;
+              background-color: #f1f1f1;
+              min-width: 50px;
+             overflow: auto;
+              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+              z-index: 1;
+            }
+            
+            .dropdown-content a {
+              color: black;
+              font-size: 20px;
+              padding: 12px 16px;
+              font-family: 'zahra-bold';
+              text-decoration: none;
+              display: block;
+            }
+            
+            .dropdown a:hover {background-color: #ddd;}
+            
+            .show {display: block;}
+            </style> 
+            <script>
+                /* When the user clicks on the button, 
+                toggle between hiding and showing the dropdown content */
+                function myFunction() {
+                  document.getElementById("myDropdown").classList.toggle("show");
+                }
+                
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                  if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
+
+                </script>
+    </head>
+    
+    <body>
+        <div class="content">
+            <div class="header">
+                <img id="logo" src="{% static 'img/logo5.png' %}">
+                <div class="dropdown">
+                    {% if user.is_authenticated and user.is_student%}
+                    <button onclick="myFunction()" class="dropbtn">{{user.username}} &nbsp;&nbsp;<span><img id="login" src="{% static 'img/login.png' %}" width="25px" height="25px"  align="center"> </span></button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="{% url 'log_out'%}">تسجيل الخروج</a>
+                        </div>
+                        {% endif%}
+              </div>
+            </div>
+            <div class="section">
+                    <a href="#">الصفحة الرئيسية</a>
+                    <a href="#">الامثلة</a>
+                    <a href="{% url 'student_exam' %}">اختبار</a>
+            </div>
+            {% block header %}
+            {% endblock %}
+            
+            <div class="footer">
+                <img src="{% static 'img/book4.png' %}" width="200px" height="150px" align="left">
+            </div>
+        </div>
+  
+    </body>
+</html>
